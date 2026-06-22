@@ -31,8 +31,24 @@ File ini berisikan form input data mahasiswa sederhana (NIM, Nama, Jurusan, Faku
 **Tampilan Awal (Form Kosong):**
 ![Form Kosong](screenshots/p14_form_empty.png)
 
-**Tampilan Setelah Data Diinput:**
+**Tampilan Setelah Data Diinput (Aksi Create):**
 ![Form Berisi Data](screenshots/p14_form_filled.png)
+
+#### Aksi Edit Data
+Ketika pengguna menekan tombol **Edit** pada salah satu baris di tabel, JavaScript akan mengambil nilai array pada indeks tersebut dan menampilkannya kembali ke dalam form input untuk diedit.
+
+**Tampilan Mode Edit:**
+![Form Edit Data](screenshots/p14_form_edit.png)
+
+#### Aksi Hapus Data (Delete)
+Ketika pengguna menekan tombol **Hapus**, sebuah dialog konfirmasi bawaan browser (`confirm()`) akan muncul untuk memvalidasi apakah pengguna benar-benar ingin menghapus baris data tersebut.
+
+**Munculnya Konfirmasi Hapus Data:**
+![Konfirmasi Hapus Data](screenshots/p14_form_delete_confirm.png)
+
+**Tampilan Setelah Data Dihapus:**
+*(Perhatikan bahwa baris data pertama atas nama Maulana Royyan Tsubaisa telah dihapus, dan tersisa data Ahmad Fauzan)*
+![Setelah Data Dihapus](screenshots/p14_form_deleted.png)
 
 *Cara Kerja Singkat Kode JS:*
 ```javascript
@@ -50,6 +66,14 @@ function tambahData() {
     // Masukkan ke array
     dataMahasiswa.push(mahasiswa);
     tampilkanData(); // Panggil fungsi re-render tabel
+}
+
+function hapusData(index) {
+    let konfirmasi = confirm("Yakin ingin menghapus data ini?");
+    if (konfirmasi) {
+        dataMahasiswa.splice(index, 1); // Hapus 1 elemen dari array berdasarkan index
+        tampilkanData();
+    }
 }
 ```
 
