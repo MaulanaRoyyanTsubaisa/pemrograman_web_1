@@ -31,9 +31,41 @@ pertemuan 16/
 └── script_jadwal.js     # Skrip AJAX spesifik untuk entitas jadwal
 ```
 
-## 3. Penjelasan Logika Kode Utama
+## 3. Tampilan Aplikasi (Screenshot)
 
-### 3.1 Backend Terpusat (`api.php`)
+### 3.1 Halaman Login
+Halaman ini merupakan pintu masuk aplikasi. Pengguna harus memasukkan username dan password yang valid. Jika login berhasil, sistem akan membuat session dan mengarahkan ke halaman utama.
+
+![Halaman Login](screenshots/ss_login.png)
+
+### 3.2 Halaman Mahasiswa (Dashboard Utama)
+Ini adalah halaman utama (dashboard) setelah login. Menampilkan tabel data mahasiswa dengan tombol Tambah, Edit, dan Hapus di setiap baris.
+
+![Halaman Mahasiswa](screenshots/ss_mahasiswa.png)
+
+### 3.3 Modal Form Tambah/Edit Mahasiswa
+Ketika tombol Tambah Mahasiswa diklik, form muncul dalam sebuah Bootstrap Modal (popup). Data diisi dan dikirim ke server menggunakan AJAX tanpa halaman berpindah.
+
+![Modal Tambah Mahasiswa](screenshots/ss_modal_mahasiswa.png)
+
+### 3.4 Halaman Dosen
+Mengelola data dosen yang ada, termasuk nama dan alamat. Data bisa ditambah, diedit, atau dihapus secara real-time.
+
+![Halaman Dosen](screenshots/ss_dosen.png)
+
+### 3.5 Halaman Mata Kuliah
+Manajemen data mata kuliah beserta jumlah SKS-nya.
+
+![Halaman Mata Kuliah](screenshots/ss_matkul.png)
+
+### 3.6 Halaman Jadwal Kuliah
+Halaman paling kompleks karena menghubungkan data Dosen dan Mata Kuliah menggunakan relasi database (FOREIGN KEY) dan LEFT JOIN SQL.
+
+![Halaman Jadwal](screenshots/ss_jadwal.png)
+
+## 4. Penjelasan Logika Kode Utama
+
+### 4.1 Backend Terpusat (`api.php`)
 Sistem menggunakan satu file `api.php` sebagai *controller* utama yang menerima *request* AJAX dari seluruh halaman frontend. Konsep ini membuat kode backend sangat terpusat (DRY - Don't Repeat Yourself).
 
 `api.php` dikendalikan melalui parameter `$_GET['action']` (seperti `list`, `get_single`, `save`, `delete`) dan parameter `$_GET['entity']` (seperti `mahasiswa`, `dosen`, `matkul`, `jadwal`).
@@ -52,7 +84,7 @@ if ($action == 'list') {
 }
 ```
 
-### 3.2 Frontend Dinamis dengan Bootstrap Modal
+### 4.2 Frontend Dinamis dengan Bootstrap Modal
 Pada setiap antarmuka (contoh `dosen.php`), digunakan form di dalam **Bootstrap Modal**. Halaman tidak akan berpindah ketika pengguna mengklik "Tambah" atau "Edit". 
 
 **Alur Tambah Data**:
@@ -63,7 +95,7 @@ Pada setiap antarmuka (contoh `dosen.php`), digunakan form di dalam **Bootstrap 
 1. User klik "Edit", fungsi `siapkanEdit(id)` mengirim `fetch()` berjenis *GET* ke `api.php?action=get_single&id=[id]`.
 2. Setelah data JSON diterima, JavaScript mengisi kolom form termasuk *hidden input* `id` dengan ID baris yang bersangkutan, kemudian modal ditampilkan.
 
-### 3.3 JavaScript Fetch API (AJAX)
+### 4.3 JavaScript Fetch API (AJAX)
 Penggunaan modern `fetch()` API menggantikan XMLHttpRequest konvensional (jQuery AJAX) untuk mengirim data tanpa *reload*.
 
 Contoh saat menyimpan data:
@@ -87,5 +119,5 @@ function simpanData(event) {
 }
 ```
 
-## 4. Kesimpulan
+## 5. Kesimpulan
 Aplikasi berhasil mengimplementasikan instruksi *best practice* dalam PHP berbasis *single-responsibility* pada file API, serta menyajikan antarmuka responsif yang dimuat secara asinkron dengan Javascript murni.
