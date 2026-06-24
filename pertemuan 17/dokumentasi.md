@@ -28,7 +28,7 @@ Ketika game dimuat pertama kali, pemain disambut dengan layar menu dengan tombol
 
 ### 3.2 Gameplay Berlangsung
 Di dalam permainan, pemain mengontrol ular hijau (dengan kepada berwarna hijau terang) untuk memakan buah apel berwarna merah (`#e94560`). Skor diperbarui secara instan di papan skor atas.
-![Gameplay Berlangsung](screenshots/p17_game.png)
+![Gameplay Berlangsung Terdetail](screenshots/p17_gameplay_detail.png)
 
 ### 3.3 Game Over Screen
 Bila ular menabrak tembok pinggir atau menabrak tubuhnya sendiri, *Game Loop* dihentikan dan layar Game Over akan muncul yang menyediakan opsi untuk "Play Again".
