@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Classic Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>Snake</h1>
+            <div class="score-board">
+                <p>Score: <span id="score">0</span></p>
+                <p>High Score: <span id="high-score">0</span></p>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <div id="game-over" class="hidden overlay">
+                <h2>Game Over!</h2>
+                <button id="restart-btn">Play Again</button>
+            </div>
+            <div id="start-screen" class="overlay">
+                <h2>Classic Snake</h2>
+                <button id="start-btn">Start Game</button>
+            </div>
+        </div>
+
+        <!-- Virtual D-pad for mobile -->
+        <div class="controls">
+            <button class="d-pad" id="btn-up">⬆️</button>
+            <div class="d-pad-row">
+                <button class="d-pad" id="btn-left">⬅️</button>
+                <button class="d-pad" id="btn-down">⬇️</button>
+                <button class="d-pad" id="btn-right">➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

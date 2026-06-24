@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a2e;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: #16213e;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    color: #e94560;
+    text-shadow: 2px 2px 0px #0f3460;
+}
+
+.score-board p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #a2a8d3;
+}
+
+#score, #high-score {
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #0f3460;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(22, 33, 62, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.overlay h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    color: #e94560;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #e94560;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(233, 69, 96, 0.3);
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #ff5270;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Mobile Controls */
+.controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.d-pad-row {
+    display: flex;
+    gap: 10px;
+}
+
+.d-pad {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 15px;
+    background: #0f3460;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.d-pad:active {
+    background: #1a1a2e;
+}
+
+/* Hide controls on desktop */
+@media (min-width: 768px) {
+    .controls {
+        display: none;
+    }
+}
